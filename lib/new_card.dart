@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/delete_confirmation_dialog.dart';
 import 'package:to_do_list/edit_todo_page.dart';
 import 'models/todo.dart';
 import 'animations/animation_title.dart';
@@ -88,7 +89,20 @@ class _NewCardState extends State<NewCard> {
             mainAxisSize: MainAxisSize.min,
             children: [
               IconButton(
-                onPressed: widget.onDelete,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => DeleteConfirmationDialog(
+                      onCancel: () {
+                        Navigator.of(context).pop();    // close dialog
+                      },
+                      onConfirm: () {
+                        Navigator.of(context).pop();    // close dialog
+                        widget.onDelete();              // perform delete
+                      }
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.delete_forever_rounded),
                 iconSize: 24.0 * textScaler.scale(1),
                 padding: EdgeInsets.zero,

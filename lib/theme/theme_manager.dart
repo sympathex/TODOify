@@ -21,7 +21,16 @@ class ThemeToggleButton extends StatelessWidget {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: ThemeNotifier.themeModeNotifier,
       builder: (context, themeMode, _) {
-        final isDark = themeMode == ThemeMode.dark;
+        // Determine Effective Brightness
+        final brightness = switch (themeMode) {
+          ThemeMode.dark => Brightness.dark,
+          ThemeMode.light => Brightness.light,
+          ThemeMode.system => WidgetsBinding.instance.platformDispatcher.platformBrightness,
+        };
+
+        final isDark = brightness == Brightness.dark;
+        final iconColor = isDark ? AppColors.darkText : AppColors.lightText;
+
         return IconButton(
           onPressed: () {
             ThemeNotifier.setTheme(isDark ? ThemeMode.light : ThemeMode.dark);
@@ -38,7 +47,7 @@ class ThemeToggleButton extends StatelessWidget {
               isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
               key: ValueKey(isDark ? 'dark' : 'light'),
               size: 28.0,
-              color: isDark ? AppColors.darkText : AppColors.lightText,
+              color: iconColor,
             ),
           ),
         );
