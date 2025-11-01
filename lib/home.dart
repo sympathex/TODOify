@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         centerTitle: true,
-        title: Text('ToDo List', style: Theme.of(context).textTheme.headlineLarge,),
+        title: Text('TODOify', style: Theme.of(context).textTheme.headlineLarge, ),
         actions: const [
           ThemeToggleButton(),
         ],
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
                 onPressed: (){
                   showDialog(context: context, builder: (context) => const AddTodoPage());
                 },
-                label: const Text('New Todo',),
+                label: const Text('New Todo', style: TextStyle(fontFamily: 'Pangolin'),),
                 icon: Icon(Icons.add_circle)
               )
             ),

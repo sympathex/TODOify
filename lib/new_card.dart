@@ -64,14 +64,16 @@ class _NewCardState extends State<NewCard> {
           subtitle: AnimatedDefaultTextStyle(
             duration: const Duration(milliseconds: 350),
             curve: Curves.easeInOutCubic,
-            //widget.description,
+            //widget.description
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.bold,
               color: widget.todo.isDone
                   ? Theme.of(context).colorScheme.secondary
                   : Theme.of(context).colorScheme.onSurface,
               decoration: 
-                  widget.todo.isDone ? TextDecoration.lineThrough : null,
+                  widget.todo.isDone ? TextDecoration.lineThrough : TextDecoration.none,
+              decorationThickness: 1.55,
+              decorationColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6)
               ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

@@ -48,7 +48,7 @@ class AppTheme {
     primaryColor: lightColorScheme.primary,
     cardColor: lightColorScheme.surface,
     scaffoldBackgroundColor: Colors.transparent,
-    fontFamily: 'EduSAHand',
+    fontFamily: 'Pangolin',
     appBarTheme: AppBarTheme(
       backgroundColor: lightColorScheme.primary,
       foregroundColor: lightColorScheme.onPrimary,
@@ -93,7 +93,7 @@ class AppTheme {
     primaryColor: darkColorScheme.primary,
     cardColor: darkColorScheme.surface,
     scaffoldBackgroundColor: Colors.transparent,     // transparent for image
-    fontFamily: 'EduSAHand',
+    fontFamily: 'Pangolin',
     appBarTheme: AppBarTheme(
       backgroundColor: darkColorScheme.primary,
       foregroundColor: darkColorScheme.onPrimary,

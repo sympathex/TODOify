@@ -11,6 +11,7 @@ class Animatedtitle extends StatelessWidget {
       builder: (context, constraints) {
         return Stack(
           alignment: Alignment.centerLeft,
+          clipBehavior: Clip.none,
           children: [
             // Base text
             Text(
@@ -26,11 +27,15 @@ class Animatedtitle extends StatelessWidget {
             ),
 
             //Animated strikethrough line 
-            AnimatedContainer(duration: const Duration(milliseconds: 350),
-              curve: Curves.easeInOutCubic,
-              height: 1,
-              width: todo.isDone ? constraints.maxWidth : 0,
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.9),
+            Positioned(
+              top: (Theme.of(context).textTheme.bodyMedium?.fontSize ?? 16) * 0.78,
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 350),
+                curve: Curves.easeOutCubic,
+                height: 1.5,
+                width: todo.isDone ? constraints.maxWidth : 0,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+              ),
             )
           ],
         );
