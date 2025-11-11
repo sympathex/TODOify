@@ -81,7 +81,7 @@ class _NewCardState extends State<NewCard> {
             child: Text(
               widget.description,
               textScaler: textScaler,
-              maxLines: 2,
+              maxLines: widget.description.length,
               overflow: TextOverflow.ellipsis,
             ),
           ),
