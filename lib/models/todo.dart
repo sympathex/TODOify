@@ -11,13 +11,13 @@ class Todo  extends HiveObject{
   final String title;
 
   @HiveField(1)
-  final String description;
+  final String? description;
 
   @HiveField(2)
   bool isDone;
 
   Todo
-  ({ required this.title , required this.description , this.isDone = false});
+  ({ required this.title , this.description , this.isDone = false});
 }
 
 class TodoListView extends StatefulWidget {
@@ -44,7 +44,7 @@ class _TodoListViewState extends State<TodoListView> {
           itemCount: box.length,
           itemBuilder: (context, index) {
             final todo = box.getAt(index)!;
-            return NewCard(title: todo.title, description: todo.description, todo: todo, index: index,  onDelete: () => TodoFunctions.deleteTodoAt(index));
+            return NewCard(title: todo.title, description: todo.description ?? '', todo: todo, index: index,  onDelete: () => TodoFunctions.deleteTodoAt(index));
               },
             );
           },

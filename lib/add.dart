@@ -23,11 +23,11 @@ class _addTodoState extends State<AddTodoPage> {
         children: [
           TextField(
             controller: _titleController,
-            decoration: const InputDecoration(labelText: "Title"),
+            decoration: const InputDecoration(labelText: "Title*"),
           ),
           TextField(
-           controller: _descriptionController,
-           decoration: const InputDecoration(labelText: "Description"),
+           controller: _descriptionController,    // Always provide a controller
+           decoration: const InputDecoration(labelText: "Description (optional)"),
           ),
         ],
       ),

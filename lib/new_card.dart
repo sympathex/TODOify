@@ -9,13 +9,13 @@ class NewCard extends StatefulWidget {
   final Todo todo;
   final int index;
   final String title;
-  final String description;
+  final String? description;
   final VoidCallback onDelete;
 
   const NewCard({
     super.key,
     required this.title,
-    required this.description,
+    this.description,
     required this.onDelete,
     required this.todo,
     required this.index
@@ -62,29 +62,31 @@ class _NewCardState extends State<NewCard> {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
             ),
           title: Animatedtitle(todo: widget.todo),
-          subtitle: AnimatedDefaultTextStyle(
-            duration: const Duration(milliseconds: 350),
-            curve: Curves.easeInOutCubic,
-            //widget.description
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              fontWeight: FontWeight.bold,
-              color: widget.todo.isDone
-                  ? Theme.of(context).colorScheme.secondary
-                  : Theme.of(context).colorScheme.onSurface,
-              decoration: 
-                  widget.todo.isDone ? TextDecoration.lineThrough : TextDecoration.none,
-              decorationThickness: 1.55,
-              decorationColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6)
+          subtitle: widget.description == null || widget.description!.isEmpty
+              ? null
+              :AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 350),
+                curve: Curves.easeInOutCubic,
+                //widget.description
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: widget.todo.isDone
+                      ? Theme.of(context).colorScheme.secondary
+                      : Theme.of(context).colorScheme.onSurface,
+                  decoration: 
+                      widget.todo.isDone ? TextDecoration.lineThrough : TextDecoration.none,
+                  decorationThickness: 1.55,
+                  decorationColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6)
+                  ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                child: Text(
+                  widget.description!,
+                  textScaler: textScaler,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            child: Text(
-              widget.description,
-              textScaler: textScaler,
-              maxLines: widget.description.length,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
