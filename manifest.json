@@ -1,7 +1,7 @@
 {
-    "name": "to_do_list",
-    "short_name": "to_do_list",
-    "start_url": ".",
+    "name": "TODOify",
+    "short_name": "TODOify",
+    "start_url": "/TODOify/",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
